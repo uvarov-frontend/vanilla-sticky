@@ -1,0 +1,61 @@
+{
+  "name": "@uvarov.frontend/vanilla-sticky",
+  "version": "0.0.5",
+  "description": "Vanilla js sticky block without using extra packages.",
+  "homepage": "https://vanilla-sticky.frontend.uvarov.tech/",
+  "keywords": [
+    "sticky",
+    "js",
+    "javascript",
+    "vanilla",
+    "vanilla-js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uvarov-frontend/vanilla-sticky.git"
+  },
+  "author": {
+    "name": "Yuri Uvarov",
+    "email": "uvarov.frontend@gmail.com",
+    "url": "https://frontend.uvarov.tech"
+  },
+  "license": "MIT",
+  "main": "./build/js/vanilla-sticky.min.js",
+  "scripts": {
+    "clean": "gulp clean",
+    "dest": "gulp dest",
+    "build": "gulp build",
+    "start": "gulp start",
+    "ftp": "gulp ftp"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 3 version"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "browser-sync": "^2.27.9",
+    "del": "^6.0.0",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "ftp-deploy": "^2.4.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.51.0",
+    "stylelint": "^14.7.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "stylelint-scss": "^4.2.0"
+  },
+  "dependencies": {
+    "highlight.js": "^11.5.1"
+  }
+}
