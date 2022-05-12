@@ -341,27 +341,6 @@ template {
   display: none;
 }
 
-@font-face {
-  font-family: "ProximaNova";
-  src: url("../fonts/ProximaNova/ProximaNova-Regular.woff2") format("woff2"), url("../fonts/ProximaNova/ProximaNova-Regular.woff") format("woff");
-  font-display: fallback;
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "ProximaNova";
-  src: url("../fonts/ProximaNova/ProximaNova-Semibold.woff2") format("woff2"), url("../fonts/ProximaNova/ProximaNova-Semibold.woff") format("woff");
-  font-display: fallback;
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "ProximaNova";
-  src: url("../fonts/ProximaNova/ProximaNova-Bold.woff2") format("woff2"), url("../fonts/ProximaNova/ProximaNova-Bold.woff") format("woff");
-  font-display: fallback;
-  font-weight: 700;
-  font-style: normal;
-}
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -382,7 +361,7 @@ body {
   font-weight: 400;
   color: black;
   background: white;
-  font-family: "ProximaNova", "Helvetica", "Arial", sans-serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

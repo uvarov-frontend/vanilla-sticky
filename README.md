@@ -1,6 +1,6 @@
 # Vanilla JS Sticky
 
-Vanilla js sticky block without using extra packages. [DEMO](https://vanilla-sticky.frontend.uvarov.tech/)
+Vanilla JS sticky block without using extra packages. [DEMO](https://vanilla-sticky.frontend.uvarov.tech/)
 
 ## License
 
