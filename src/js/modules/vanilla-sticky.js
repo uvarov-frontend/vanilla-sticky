@@ -8,6 +8,10 @@ export default class VanillaSticky {
 			top: options.indents?.top ?? 0,
 			bottom: options.indents?.bottom ?? 0,
 		};
+		this.window = {
+			min: options.window?.min ?? null,
+			max: options.window?.max ?? null,
+		};
 		this.location = undefined;
 		this.freeplace = 0;
 		this.scroll = 0;
@@ -54,9 +58,13 @@ export default class VanillaSticky {
 		let currentWindowHeight = window.innerHeight;
 		window.addEventListener('resize', (e) => {
 			if (e.target.innerHeight > currentWindowHeight || e.target.innerHeight < currentWindowHeight) {
+				currentWindowHeight = e.target.innerHeight;
+
+				if (this.window.min && window.innerWidth < this.window.min) return;
+				if (this.window.max && window.innerWidth > this.window.max) return;
+
 				this.calcPosition();
 				this.stickBlock();
-				currentWindowHeight = e.target.innerHeight;
 			}
 		});
 	}
@@ -68,8 +76,13 @@ export default class VanillaSticky {
 
 	init() {
 		if (!this.HTMLElement) return;
+
+		this.windowResize();
+
+		if (this.window.min && window.innerWidth < this.window.min) return;
+		if (this.window.max && window.innerWidth > this.window.max) return;
+
 		this.calcPosition();
 		this.stickBlock();
-		this.windowResize();
 	}
 }

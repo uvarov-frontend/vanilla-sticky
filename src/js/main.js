@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			top: 70,
 			bottom: 10,
 		},
+		window: {
+			min: 1200,
+			max: null,
+		},
 	});
 	additionalSidebarSticky.init();
 

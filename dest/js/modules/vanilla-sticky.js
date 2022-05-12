@@ -13,7 +13,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var VanillaSticky = /*#__PURE__*/function () {
   function VanillaSticky(options) {
-    var _options$HTMLElement, _options$type, _options$stretch, _options$resize, _options$indents$top, _options$indents, _options$indents$bott, _options$indents2;
+    var _options$HTMLElement, _options$type, _options$stretch, _options$resize, _options$indents$top, _options$indents, _options$indents$bott, _options$indents2, _options$window$min, _options$window, _options$window$max, _options$window2;
 
     _classCallCheck(this, VanillaSticky);
 
@@ -24,6 +24,10 @@ var VanillaSticky = /*#__PURE__*/function () {
     this.indents = {
       top: (_options$indents$top = (_options$indents = options.indents) === null || _options$indents === void 0 ? void 0 : _options$indents.top) !== null && _options$indents$top !== void 0 ? _options$indents$top : 0,
       bottom: (_options$indents$bott = (_options$indents2 = options.indents) === null || _options$indents2 === void 0 ? void 0 : _options$indents2.bottom) !== null && _options$indents$bott !== void 0 ? _options$indents$bott : 0
+    };
+    this.window = {
+      min: (_options$window$min = (_options$window = options.window) === null || _options$window === void 0 ? void 0 : _options$window.min) !== null && _options$window$min !== void 0 ? _options$window$min : null,
+      max: (_options$window$max = (_options$window2 = options.window) === null || _options$window2 === void 0 ? void 0 : _options$window2.max) !== null && _options$window$max !== void 0 ? _options$window$max : null
     };
     this.location = undefined;
     this.freeplace = 0;
@@ -78,11 +82,13 @@ var VanillaSticky = /*#__PURE__*/function () {
       var currentWindowHeight = window.innerHeight;
       window.addEventListener('resize', function (e) {
         if (e.target.innerHeight > currentWindowHeight || e.target.innerHeight < currentWindowHeight) {
+          currentWindowHeight = e.target.innerHeight;
+          if (_this.window.min && window.innerWidth < _this.window.min) return;
+          if (_this.window.max && window.innerWidth > _this.window.max) return;
+
           _this.calcPosition();
 
           _this.stickBlock();
-
-          currentWindowHeight = e.target.innerHeight;
         }
       });
     }
@@ -96,9 +102,11 @@ var VanillaSticky = /*#__PURE__*/function () {
     key: "init",
     value: function init() {
       if (!this.HTMLElement) return;
+      this.windowResize();
+      if (this.window.min && window.innerWidth < this.window.min) return;
+      if (this.window.max && window.innerWidth > this.window.max) return;
       this.calcPosition();
       this.stickBlock();
-      this.windowResize();
     }
   }]);
 

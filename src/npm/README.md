@@ -39,6 +39,8 @@ The `HTMLElement` option is mandatory, all other options are optional.
 | resize | true | Recalculate the height of the content and its location each time the screen height changes. |
 | indents.top | 0 | Specify the top indents after which the block will stick. |
 | indents.bottom | 0 | Specify the bottom indents after which the block will stick. |
+| window.min | null | The minimum screen width after which the module stops working. |
+| window.max | null | The maximum screen width after which the module stops working. |
 
 ## Usage example
 
@@ -51,6 +53,10 @@ const sidebar = new VanillaSticky({
   indents: {
    top: 70,
    bottom: 10,
+  },
+  window: {
+   min: 1200,
+   max: null,
   },
  });
 
