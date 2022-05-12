@@ -25,79 +25,29 @@
 
 .main-content {
 	grid-area: main-content;
-	display: grid;
-	grid-auto-flow: row;
-	grid-auto-rows: max-content;
-	gap: 10px;
-	align-items: start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 	max-width: 100%;
 	min-width: 0;
 }
 
 .main-sidebar {
 	grid-area: main-sidebar;
-	display: grid;
-	grid-auto-flow: row;
-	grid-auto-rows: max-content;
-	gap: 10px;
-	align-items: start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 	max-width: 100%;
 	min-width: 0;
+	min-height: max-content;
 }
 
 .additional-sidebar {
 	grid-area: additional-sidebar;
-	display: grid;
-	grid-auto-flow: row;
-	grid-auto-rows: max-content;
-	gap: 10px;
-	align-items: start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 	max-width: 100%;
 	min-width: 0;
-}
-
-.main-component {
-	background-color: white;
-	border-radius: 4px;
-	padding: 20px;
-	min-height: 150px;
-
-	&_one {
-		height: 200px;
-	}
-
-	&_two {
-		height: 350px;
-	}
-
-	&_three {
-		height: 600px;
-	}
-}
-
-.sidebar-component {
-	background-color: white;
-	border-radius: 4px;
-	padding: 20px;
-	min-height: 150px;
-
-	&_one {
-		height: 150px;
-		background-color: tomato;
-	}
-
-	&_two {
-		height: 250px;
-		background-color: burlywood;
-	}
-
-	&_three {
-		height: 400px;
-		background-color: cornflowerblue;
-	}
-
-	&_four {
-		height: 100px;
-		background-color: yellowgreen;
-	}
+	min-height: max-content;
 }

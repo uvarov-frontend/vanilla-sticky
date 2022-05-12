@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var contentSticky = new VanillaSticky({
     HTMLElement: document.querySelector('.main-content'),
-    padding: {
+    indents: {
       top: 70,
       bottom: 10
     }
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   contentSticky.init();
   var mainSidebarSticky = new VanillaSticky({
     HTMLElement: document.querySelector('.main-sidebar'),
-    padding: {
+    indents: {
       top: 70,
       bottom: 10
     }
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   mainSidebarSticky.init();
   var additionalSidebarSticky = new VanillaSticky({
     HTMLElement: document.querySelector('.additional-sidebar'),
-    padding: {
+    indents: {
       top: 70,
       bottom: 10
     }

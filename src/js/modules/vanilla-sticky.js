@@ -1,33 +1,51 @@
 export default class VanillaSticky {
 	constructor(options) {
 		this.HTMLElement = options.HTMLElement ?? null;
-		this.padding = {
-			top: options.padding?.top ?? 0,
-			bottom: options.padding?.bottom ?? 0,
-		};
-		this.type = options.type ?? 'bottom';
+		this.position = options.type ?? 'auto';
+		this.stretch = options.stretch ?? true;
 		this.resize = options.resize ?? true;
-		this.position = 0;
+		this.indents = {
+			top: options.indents?.top ?? 0,
+			bottom: options.indents?.bottom ?? 0,
+		};
+		this.location = undefined;
+		this.freeplace = 0;
+		this.scroll = 0;
 	}
 
 	calcPosition() {
-		const freePlaceWindow = window.innerHeight - this.padding.top - this.padding.bottom;
-		if (this.HTMLElement.clientHeight < freePlaceWindow) this.type = 'top';
+		this.freeplace = window.innerHeight - this.indents.top - this.indents.bottom;
 
-		switch (this.type) {
+		if (this.position === 'auto') {
+			if (this.HTMLElement.clientHeight < this.freeplace) {
+				this.location = 'top';
+			} else {
+				this.location = 'bottom';
+			}
+		} else {
+			this.location = this.position;
+		}
+
+		switch (this.location) {
 			case 'top':
-				this.position = this.padding.top;
+				this.scroll = this.indents.top;
 				break;
 			case 'bottom':
-				this.position = window.innerHeight - this.HTMLElement.clientHeight - this.padding.bottom;
+				this.scroll = window.innerHeight - this.HTMLElement.clientHeight - this.indents.bottom;
 				break;
-			// no default
+			default:
+				// eslint-disable-next-line no-console
+				console.error(`Invalid position: "${this.position}". Available positions: "auto", "top", "bottom".`);
 		}
 	}
 
 	stickBlock() {
 		this.HTMLElement.style.position = 'sticky';
-		this.HTMLElement.style.top = `${this.position}px`;
+		this.HTMLElement.style.top = `${this.scroll}px`;
+
+		if (this.stretch && this.location === 'top') {
+			this.HTMLElement.style.minHeight = `${this.freeplace}px`;
+		}
 	}
 
 	windowResize() {

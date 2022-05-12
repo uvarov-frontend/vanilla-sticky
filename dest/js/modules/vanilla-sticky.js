@@ -13,42 +13,61 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var VanillaSticky = /*#__PURE__*/function () {
   function VanillaSticky(options) {
-    var _options$HTMLElement, _options$padding$top, _options$padding, _options$padding$bott, _options$padding2, _options$type, _options$resize;
+    var _options$HTMLElement, _options$type, _options$stretch, _options$resize, _options$indents$top, _options$indents, _options$indents$bott, _options$indents2;
 
     _classCallCheck(this, VanillaSticky);
 
     this.HTMLElement = (_options$HTMLElement = options.HTMLElement) !== null && _options$HTMLElement !== void 0 ? _options$HTMLElement : null;
-    this.padding = {
-      top: (_options$padding$top = (_options$padding = options.padding) === null || _options$padding === void 0 ? void 0 : _options$padding.top) !== null && _options$padding$top !== void 0 ? _options$padding$top : 0,
-      bottom: (_options$padding$bott = (_options$padding2 = options.padding) === null || _options$padding2 === void 0 ? void 0 : _options$padding2.bottom) !== null && _options$padding$bott !== void 0 ? _options$padding$bott : 0
-    };
-    this.type = (_options$type = options.type) !== null && _options$type !== void 0 ? _options$type : 'bottom';
+    this.position = (_options$type = options.type) !== null && _options$type !== void 0 ? _options$type : 'auto';
+    this.stretch = (_options$stretch = options.stretch) !== null && _options$stretch !== void 0 ? _options$stretch : true;
     this.resize = (_options$resize = options.resize) !== null && _options$resize !== void 0 ? _options$resize : true;
-    this.position = 0;
+    this.indents = {
+      top: (_options$indents$top = (_options$indents = options.indents) === null || _options$indents === void 0 ? void 0 : _options$indents.top) !== null && _options$indents$top !== void 0 ? _options$indents$top : 0,
+      bottom: (_options$indents$bott = (_options$indents2 = options.indents) === null || _options$indents2 === void 0 ? void 0 : _options$indents2.bottom) !== null && _options$indents$bott !== void 0 ? _options$indents$bott : 0
+    };
+    this.location = undefined;
+    this.freeplace = 0;
+    this.scroll = 0;
   }
 
   _createClass(VanillaSticky, [{
     key: "calcPosition",
     value: function calcPosition() {
-      var freePlaceWindow = window.innerHeight - this.padding.top - this.padding.bottom;
-      if (this.HTMLElement.clientHeight < freePlaceWindow) this.type = 'top';
+      this.freeplace = window.innerHeight - this.indents.top - this.indents.bottom;
 
-      switch (this.type) {
+      if (this.position === 'auto') {
+        if (this.HTMLElement.clientHeight < this.freeplace) {
+          this.location = 'top';
+        } else {
+          this.location = 'bottom';
+        }
+      } else {
+        this.location = this.position;
+      }
+
+      switch (this.location) {
         case 'top':
-          this.position = this.padding.top;
+          this.scroll = this.indents.top;
           break;
 
         case 'bottom':
-          this.position = window.innerHeight - this.HTMLElement.clientHeight - this.padding.bottom;
+          this.scroll = window.innerHeight - this.HTMLElement.clientHeight - this.indents.bottom;
           break;
-        // no default
+
+        default:
+          // eslint-disable-next-line no-console
+          console.error("Invalid position: \"".concat(this.position, "\". Available positions: \"auto\", \"top\", \"bottom\"."));
       }
     }
   }, {
     key: "stickBlock",
     value: function stickBlock() {
       this.HTMLElement.style.position = 'sticky';
-      this.HTMLElement.style.top = "".concat(this.position, "px");
+      this.HTMLElement.style.top = "".concat(this.scroll, "px");
+
+      if (this.stretch && this.location === 'top') {
+        this.HTMLElement.style.minHeight = "".concat(this.freeplace, "px");
+      }
     }
   }, {
     key: "windowResize",

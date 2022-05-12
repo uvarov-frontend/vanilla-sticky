@@ -4,3 +4,63 @@
 @import './other/wrapper.scss';
 @import './other/header.scss';
 @import './other/footer.scss';
+
+.main-component {
+	width: 100%;
+	min-height: 150px;
+	background-color: white;
+	border-radius: 4px;
+	padding: 20px;
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+		flex-grow: 1;
+	}
+
+	&_one {
+		height: 200px;
+	}
+
+	&_two {
+		height: 350px;
+	}
+
+	&_three {
+		height: 600px;
+	}
+}
+
+.sidebar-component {
+	width: 100%;
+	min-height: 150px;
+	background-color: white;
+	border-radius: 4px;
+	padding: 20px;
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+		flex-grow: 1;
+	}
+
+	&_one {
+		height: 150px;
+		background-color: tomato;
+	}
+
+	&_two {
+		height: 250px;
+		background-color: burlywood;
+	}
+
+	&_three {
+		height: 400px;
+		background-color: cornflowerblue;
+	}
+
+	&_four {
+		height: 100px;
+		background-color: yellowgreen;
+	}
+}
