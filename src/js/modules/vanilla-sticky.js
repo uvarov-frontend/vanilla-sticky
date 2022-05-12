@@ -57,11 +57,11 @@ export default class VanillaSticky {
 
 		let currentWindowHeight = window.innerHeight;
 		window.addEventListener('resize', (e) => {
+			if (this.window.min && window.innerWidth < this.window.min) return;
+			if (this.window.max && window.innerWidth > this.window.max) return;
+
 			if (e.target.innerHeight > currentWindowHeight || e.target.innerHeight < currentWindowHeight) {
 				currentWindowHeight = e.target.innerHeight;
-
-				if (this.window.min && window.innerWidth < this.window.min) return;
-				if (this.window.max && window.innerWidth > this.window.max) return;
 
 				this.calcPosition();
 				this.stickBlock();

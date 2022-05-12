@@ -1,6 +1,6 @@
 {
   "name": "@uvarov.frontend/vanilla-sticky",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Vanilla JS sticky block without using extra packages.",
   "homepage": "https://vanilla-sticky.frontend.uvarov.tech/",
   "keywords": [

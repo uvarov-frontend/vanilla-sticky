@@ -81,10 +81,11 @@ var VanillaSticky = /*#__PURE__*/function () {
       if (!this.resize) return;
       var currentWindowHeight = window.innerHeight;
       window.addEventListener('resize', function (e) {
+        if (_this.window.min && window.innerWidth < _this.window.min) return;
+        if (_this.window.max && window.innerWidth > _this.window.max) return;
+
         if (e.target.innerHeight > currentWindowHeight || e.target.innerHeight < currentWindowHeight) {
           currentWindowHeight = e.target.innerHeight;
-          if (_this.window.min && window.innerWidth < _this.window.min) return;
-          if (_this.window.max && window.innerWidth > _this.window.max) return;
 
           _this.calcPosition();
 
