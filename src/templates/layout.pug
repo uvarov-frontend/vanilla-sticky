@@ -1,0 +1,29 @@
+//- Variables
+- var sidebar = true;
+block variables
+
+doctype html
+html(lang="ru-RU")
+
+	//- Head
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="initial-scale=1.0, width=device-width")
+		meta(name="format-detection" content="telephone=no")
+		title= title
+		meta(name="description" content="Vanilla js calendar without using additional packages")
+		meta(name="keywords" content="vanilla, js, calendar, lite")
+		<!-- webpackIgnore: true -->
+		link(rel="shortcut icon" href="/favicon.svg")
+
+		block head
+
+	body
+		block start-body
+		.wrapper
+			include main/main-header
+			.main-wrapper
+				block sidebar
+				block content
+			include main/main-footer
+		block end-body

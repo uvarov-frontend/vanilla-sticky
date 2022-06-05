@@ -1,9 +1,24 @@
+// Plugins
+@import '~normalize.css';
+
+// Variables and mixin
+@import '@/styles/variables.scss';
+@import '@/styles/mixin.scss';
+
 // Global
-@import './other/normalize.scss';
-@import './other/basic.scss';
-@import './other/wrapper.scss';
-@import './other/header.scss';
-@import './other/footer.scss';
+@import '@/styles/global/fonts.scss';
+@import '@/styles/global/basic.scss';
+
+// Main
+@import '@/styles/main/main.scss';
+@import '@/styles/main/main-header.scss';
+@import '@/styles/main/main-footer.scss';
+
+// Common
+@import '@/styles/common/animation.scss';
+@import '@/styles/common/other.scss';
+@import '@/styles/common/scroller.scss';
+@import '@/styles/common/btn.scss';
 
 .main-component {
 	width: 100%;

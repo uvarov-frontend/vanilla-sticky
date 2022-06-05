@@ -1,0 +1,26 @@
+extends ../layout
+
+block variables
+	- var title = 'Vanilla JS Sticky';
+
+block head
+	include ../components/yandex-metrika
+
+block content
+	main.main-content
+		.main-component.main-component_one
+		.main-component.main-component_two
+		.main-component.main-component_three
+
+block sidebar
+	aside.main-sidebar
+		.sidebar-component.sidebar-component_one
+		.sidebar-component.sidebar-component_two
+		.sidebar-component.sidebar-component_three
+		.sidebar-component.sidebar-component_four
+		.sidebar-component.sidebar-component_two
+		.sidebar-component.sidebar-component_three
+	aside.additional-sidebar
+		.sidebar-component.sidebar-component_three
+		.sidebar-component.sidebar-component_four
+		.sidebar-component.sidebar-component_one

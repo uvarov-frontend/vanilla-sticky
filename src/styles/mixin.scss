@@ -1,0 +1,45 @@
+// Сетка на внутренних отступах
+@mixin container() {
+	min-width: #{$mw_phone}px;
+	padding-left: 15px;
+	padding-right: 15px;
+
+	@media (min-width: #{$mq_desktop}px) {
+		padding-left: calc(50% - #{$pd_desktop}px);
+		padding-right: calc(50% - #{$pd_desktop}px);
+	}
+}
+
+// Медиа-запросы
+@mixin mq($width, $type: max) {
+	$breakpoints: (
+		'phone_small': $mq_phone_small,
+		'phone_big': $mq_phone_big,
+		'tablet_small': $mq_tablet_small,
+		'tablet_big': $mq_tablet_big,
+		'desktop': $mq_desktop,
+	);
+
+	@if map_has_key($breakpoints, $width) {
+		$width: map_get($breakpoints, $width);
+
+		@if $type == max {
+			$width: $width - 1;
+		}
+
+		@media only screen and (#{$type}-width: #{$width}px) {
+			@content;
+		}
+	}
+}
+
+// Подкючение шрифтов
+@mixin font($font_name, $file_name, $font_display, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		src: url('@/fonts/#{$font_name}/#{$file_name}.woff2') format('woff2'), url('@/fonts/#{$font_name}/#{$file_name}.woff') format('woff');
+		font-display: $font_display;
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}

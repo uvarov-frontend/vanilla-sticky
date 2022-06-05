@@ -1,0 +1,20 @@
+// Цвета
+$color-white: #ffffff;
+$color-black: #000000;
+
+// Шрифты
+$Lato: 'Lato', 'Helvetica', 'Arial', sans-serif;
+$JetBrainsMono: 'JetBrainsMono', monospace;
+
+// Брейкпоинты
+$mq_phone_small: 375; // 0-374px
+$mq_phone_big: 544; // 376-543px
+$mq_tablet_small: 768; // 544-767px
+$mq_tablet_big: 992; // 768-991px
+$mq_desktop: 1200; // 992-1199px
+
+// Ширина контейнера за счет динамических отступов
+$pd_desktop: 590; // 1180px
+
+// Минимальный вьюпорт
+$mw_phone: 320;

@@ -1,0 +1,9 @@
+// Lato
+@include font('Lato', 'Lato-Light', fallback, '300', 'normal');
+@include font('Lato', 'Lato-Regular', fallback, '400', 'normal');
+@include font('Lato', 'Lato-Semibold', fallback, '600', 'normal');
+@include font('Lato', 'Lato-Bold', fallback, '700', 'normal');
+
+// JetBrainsMono
+@include font('JetBrainsMono', 'JetBrainsMono-Regular', fallback, '400', 'normal');
+@include font('JetBrainsMono', 'JetBrainsMono-Semibold', fallback, '700', 'normal');
