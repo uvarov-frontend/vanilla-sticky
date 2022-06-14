@@ -1,7 +1,7 @@
 export default class VanillaSticky {
 	constructor(options) {
 		this.HTMLElement = options.HTMLElement ?? null;
-		this.position = options.type ?? 'auto';
+		this.position = options.position ?? 'auto';
 		this.stretch = options.stretch ?? true;
 		this.resize = options.resize ?? true;
 		this.indents = {

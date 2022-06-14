@@ -1,4 +1,4 @@
-# Vanilla JS Sticky
+# Vanilla JS Sticky v0.0.9
 
 Vanilla JS sticky block without using extra packages. [DEMO](https://vanilla-sticky.frontend.uvarov.tech/)
 
@@ -23,8 +23,7 @@ import VanillaSticky from '@uvarov.frontend/vanilla-sticky';
 It’s possible to manually include the necessary `<script>` tags in the end body of your HTML page and then initialize a calendar via browser globals.
 
 ```html
-<script>var exports = {};</script>
-<script src="./js/modules/vanilla-sticky.min.js"></script>
+<script src="./js/vanilla-sticky.min.js"></script>
 ```
 
 ## API

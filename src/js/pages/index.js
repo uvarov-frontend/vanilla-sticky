@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const additionalSidebarSticky = new VanillaSticky({
 		HTMLElement: document.querySelector('.additional-sidebar'),
+		position: 'top',
 		indents: {
 			top: 70,
 			bottom: 10,
