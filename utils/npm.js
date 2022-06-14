@@ -1,5 +1,9 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
+
 const fs = require('fs');
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -12,7 +16,9 @@ const ENTRY_FILES = fs.readdirSync(`${PATHS.npm}/src/entry`);
 const ENTRY = {};
 
 ENTRY_FILES.forEach((entry) => {
-	ENTRY[entry.replace(/.js/, '')] = `${PATHS.npm}/src/entry/${entry}`;
+	const ENTRYS = require(`${PATHS.npm}/src/entry/${entry}`);
+	ENTRY[entry.replace(/.js/, '')] = `${PATHS.src}${ENTRYS.js}`;
+	if (ENTRYS.style) ENTRY[entry.replace(/.js/, '.min')] = `${PATHS.src}${ENTRYS.style}`;
 });
 
 module.exports = {
@@ -36,9 +42,23 @@ module.exports = {
 			'@': PATHS.src,
 		},
 	},
+	optimization: {
+		minimize: true,
+		minimizer: [
+			new TerserPlugin({
+				parallel: true,
+				extractComments: false,
+				terserOptions: {
+					format: {
+						comments: false,
+					},
+				},
+			}),
+		],
+	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: '[name].min.css',
+			filename: '[name].css',
 			linkType: false,
 		}),
 		new CopyWebpackPlugin({
@@ -54,18 +74,10 @@ module.exports = {
 				test: /\.js$/i,
 				include: PATHS.src,
 				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'babel-loader',
-						options: {
-							presets: ['@babel/preset-env'],
-						},
-					},
-				],
+				loader: 'babel-loader',
 			},
 			{
 				test: /\.(css|s[ac]ss)$/i,
-				include: PATHS.src,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,

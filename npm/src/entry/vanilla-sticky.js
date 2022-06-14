@@ -1,1 +1,3 @@
-import '@/js/modules/vanilla-sticky.js';
+module.exports = {
+	js: '/js/modules/vanilla-sticky.js',
+};

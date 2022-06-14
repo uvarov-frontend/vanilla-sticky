@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1,width=device-width" />
+		<meta name="format-detection" content="telephone=no" />
+		<title>Vanilla JS Sticky</title>
+		<script src="./vanilla-sticky.min.js" defer></script>
+
+		<style>
+			html {
+				box-sizing: border-box;
+			}
+
+			*,
+			*::after,
+			*::before {
+				box-sizing: inherit;
+			}
+
+			body {
+				padding: 0;
+				margin: 0;
+				font-size: 16px;
+				line-height: 1.4;
+				font-weight: 400;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			.wrapper {
+				position: relative;
+				z-index: 1;
+				display: grid;
+				grid-template-rows: auto 1fr auto;
+				grid-template-areas: "header" "main" "footer";
+				min-height: 100vh;
+				min-width: 320px;
+			}
+
+			.main-wrapper {
+				overflow: clip;
+				position: relative;
+				margin-top: 60px;
+				z-index: 2;
+				grid-area: main;
+				min-height: 250px;
+				background-color: #f1f1f1;
+				display: grid;
+				gap: 10px;
+				grid-template-areas: "main-content main-sidebar additional-sidebar";
+				grid-template-columns: 1fr 300px 200px;
+				align-items: start;
+				padding: 10px calc(50% - 590px);
+			}
+
+			.main-header {
+				position: fixed;
+				z-index: 3;
+				grid-area: header;
+				width: 100%;
+				height: 70px;
+				background-color: white;
+				box-shadow: 0 4px 20px rgb(0 0 0 / 7%);
+			}
+
+			.main-header + .main-wrapper {
+				margin-top: 70px;
+			}
+
+			.main-footer {
+				position: relative;
+				z-index: 1;
+				grid-area: footer;
+				width: 100%;
+				height: 130px;
+				background-color: white;
+			}
+
+			.main-content {
+				grid-area: main-content;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				max-width: 100%;
+				min-width: 0;
+			}
+
+			.main-sidebar {
+				grid-area: main-sidebar;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				max-width: 100%;
+				min-width: 0;
+				min-height: max-content;
+			}
+
+			.additional-sidebar {
+				grid-area: additional-sidebar;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				max-width: 100%;
+				min-width: 0;
+				min-height: max-content;
+			}
+
+			.main-component {
+				width: 100%;
+				min-height: 150px;
+				background-color: white;
+				border-radius: 4px;
+				padding: 20px;
+				margin-bottom: 10px;
+			}
+
+			.sidebar-component {
+				width: 100%;
+				min-height: 150px;
+				background-color: white;
+				border-radius: 4px;
+				padding: 20px;
+				margin-bottom: 10px;
+			}
+
+			.main-component:last-child,
+			.sidebar-component:last-child {
+				margin-bottom: 0;
+				flex-grow: 1;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<header class="main-header"></header>
+			<div class="main-wrapper">
+				<main class="main-content">
+					<div class="main-component main-component_one"></div>
+					<div class="main-component main-component_two"></div>
+					<div class="main-component main-component_three"></div>
+				</main>
+				<aside class="main-sidebar">
+					<div class="sidebar-component sidebar-component_one"></div>
+					<div class="sidebar-component sidebar-component_two"></div>
+					<div class="sidebar-component sidebar-component_three"></div>
+					<div class="sidebar-component sidebar-component_four"></div>
+					<div class="sidebar-component sidebar-component_two"></div>
+					<div class="sidebar-component sidebar-component_three"></div>
+				</aside>
+				<aside class="additional-sidebar">
+					<div class="sidebar-component sidebar-component_three"></div>
+					<div class="sidebar-component sidebar-component_four"></div>
+					<div class="sidebar-component sidebar-component_one"></div>
+				</aside>
+			</div>
+			<footer class="main-footer"></footer>
+		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const contentSticky = new VanillaSticky({
+					HTMLElement: document.querySelector(".main-content"),
+					indents: {
+						top: 70,
+						bottom: 10,
+					},
+				});
+				contentSticky.init();
+
+				const mainSidebarSticky = new VanillaSticky({
+					HTMLElement: document.querySelector(".main-sidebar"),
+					indents: {
+						top: 70,
+						bottom: 10,
+					},
+				});
+				mainSidebarSticky.init();
+
+				const additionalSidebarSticky = new VanillaSticky({
+					HTMLElement: document.querySelector('.additional-sidebar'),
+					position: 'top',
+					indents: {
+						top: 70,
+						bottom: 10,
+					},
+					window: {
+						min: 1200,
+						max: null,
+					},
+				});
+				additionalSidebarSticky.init();
+			});
+		</script>
+	</body>
+</html>

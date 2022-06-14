@@ -11,8 +11,8 @@ html(lang="ru-RU")
 		meta(name="viewport" content="initial-scale=1.0, width=device-width")
 		meta(name="format-detection" content="telephone=no")
 		title= title
-		meta(name="description" content="Vanilla js calendar without using additional packages")
-		meta(name="keywords" content="vanilla, js, calendar, lite")
+		meta(name="description" content="Vanilla js sticky without using additional packages")
+		meta(name="keywords" content="vanilla, js, sticky, lite")
 		<!-- webpackIgnore: true -->
 		link(rel="shortcut icon" href="/favicon.svg")
 
@@ -23,7 +23,7 @@ html(lang="ru-RU")
 		.wrapper
 			include main/main-header
 			.main-wrapper
-				block sidebar
 				block content
+				block sidebar
 			include main/main-footer
 		block end-body
