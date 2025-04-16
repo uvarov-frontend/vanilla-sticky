@@ -1,6 +1,6 @@
 # Vanilla JS Sticky v1.0.0
 
-Vanilla JS sticky block without using extra packages. [DEMO](https://vanilla-sticky.frontend.uvarov.tech/)
+Vanilla JS sticky block without using extra packages.
 
 ## Initialize
 
